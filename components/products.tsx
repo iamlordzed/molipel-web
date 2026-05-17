@@ -6,8 +6,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
 /*
  * Curated list of unique Molipel product images.
- * Duplicates and very similar angles have been removed.
- * Videos are listed separately below the gallery.
+ * Duplicates, very similar angles, and images used elsewhere (hero/banner) removed.
  */
 const products = [
   {
@@ -74,14 +73,6 @@ const products = [
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/25-WrmHh3u6AooGQvpzyDWIxwJfbNaS20.jpeg",
     alt: "Deposito Molipel - Pallets rollos de cocina",
   },
-  {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/26-Rm9vZG84DrDDrPdxk0tEKSQVd2v9df.jpeg",
-    alt: "Deposito Molipel - Pallets papel higienico 30 rollos",
-  },
-  {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/23-oUPdSgotqBY022PdpVkDvWNxDCkbbW.jpeg",
-    alt: "Deposito Molipel - Stock papel higienico 80 metros",
-  },
 ]
 
 export function Products() {
@@ -128,11 +119,11 @@ export function Products() {
           ))}
         </div>
 
-        {/* Videos section */}
+        {/* Videos section - vertical format */}
         <h3 className="mb-6 mt-14 text-center text-xl font-semibold text-foreground">
           Videos de nuestra planta y productos
         </h3>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {[
             "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/video1-OSOhyA8sOxkRaEqHhqpZubyfe1plhK.mp4",
             "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/video2-euknmmQTrW1ZBPSQmFMI9DdLTtFwHA.mp4",
@@ -146,7 +137,7 @@ export function Products() {
               controls
               preload="metadata"
               playsInline
-              className="aspect-video w-full rounded-lg border border-border bg-card object-cover"
+              className="aspect-[9/16] w-full rounded-lg border border-border bg-card object-cover"
             >
               <source src={url} type="video/mp4" />
               Su navegador no soporta video HTML5.

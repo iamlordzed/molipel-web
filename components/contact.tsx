@@ -1,4 +1,5 @@
-import { MessageCircle, Phone, MapPin } from "lucide-react"
+import Image from "next/image"
+import { MapPin } from "lucide-react"
 
 const WHATSAPP_URL =
   "https://wa.me/5491130217554?text=Hola%2C%20quiero%20consultar%20por%20productos%20Molipel"
@@ -21,19 +22,19 @@ export function Contact() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-8 py-4 text-base font-semibold text-[#fff] shadow-lg transition-transform hover:scale-105"
         >
-          <MessageCircle className="size-5" />
+          <Image
+            src="/images/whatsapp-icon.png"
+            alt=""
+            width={20}
+            height={20}
+            className="size-5 rounded-full"
+          />
           Contactar por WhatsApp
         </a>
 
-        <div className="mt-12 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Phone className="size-4 text-primary" />
-            <span>+54 9 11 3021-7554</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <MapPin className="size-4 text-primary" />
-            <span>CABA, GBA e interior del pais</span>
-          </div>
+        <div className="mt-12 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <MapPin className="size-4 text-primary" />
+          <span>CABA, GBA e interior del pais</span>
         </div>
       </div>
     </section>
