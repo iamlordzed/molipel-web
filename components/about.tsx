@@ -9,7 +9,7 @@ const features = [
   },
   {
     icon: Award,
-    title: "Representantes AMK Plasticos",
+    title: "Representantes AMK",
     description:
       "Somos representantes oficiales de la marca AMK Plasticos, con reconocimiento nacional por excelencia en calidad y precio.",
   },
