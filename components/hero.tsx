@@ -40,13 +40,6 @@ export function Hero() {
           rel="noopener noreferrer"
           className="mt-2 inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-6 py-3 text-sm font-semibold text-[#fff] shadow-lg transition-transform hover:scale-105"
         >
-          <Image
-            src="/images/whatsapp-icon.png"
-            alt=""
-            width={20}
-            height={20}
-            className="size-5 rounded-full"
-          />
           Consultar por WhatsApp
         </a>
       </div>
