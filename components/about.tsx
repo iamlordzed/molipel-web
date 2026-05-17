@@ -17,7 +17,7 @@ const features = [
     icon: Truck,
     title: "Logistica a todo el pais",
     description:
-      "Con una trayectoria de mas de 30 anos de distribucion en CABA, GBA e interior del pais, con las unidades adecuadas para cada necesidad.",
+      "Con una trayectoria de mas de 30 años de distribucion en CABA, GBA e interior del pais, con las unidades adecuadas para cada necesidad.",
   },
 ]
 
