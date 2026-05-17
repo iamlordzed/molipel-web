@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import { VideoPlayer } from "./video-player"
 
 /*
  * Curated list of unique Molipel product images.
@@ -123,7 +124,7 @@ export function Products() {
         <h3 className="mb-6 mt-14 text-center text-xl font-semibold text-foreground">
           Videos de nuestra planta y productos
         </h3>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
             "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/video1-OSOhyA8sOxkRaEqHhqpZubyfe1plhK.mp4",
             "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/video2-euknmmQTrW1ZBPSQmFMI9DdLTtFwHA.mp4",
@@ -132,16 +133,7 @@ export function Products() {
             "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/video5-c5eQDyk2aRml0lFOumrBKSJi1prnOL.mp4",
             "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/video6-4FNC2TUxJIxsfVhJ8vgzcL2bYyQWpX.mp4",
           ].map((url, i) => (
-            <video
-              key={i}
-              controls
-              preload="metadata"
-              playsInline
-              className="aspect-[9/16] w-full rounded-lg border border-border bg-card object-cover"
-            >
-              <source src={url} type="video/mp4" />
-              Su navegador no soporta video HTML5.
-            </video>
+            <VideoPlayer key={i} src={url} />
           ))}
         </div>
       </div>
