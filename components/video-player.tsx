@@ -10,9 +10,13 @@ interface VideoPlayerProps {
 export function VideoPlayer({ src }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const progressRef = useRef<HTMLDivElement>(null)
+  const volumeRef = useRef<HTMLDivElement>(null)
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(true)
+  const [volume, setVolume] = useState(1)
   const [progress, setProgress] = useState(0)
+  const [showVolume, setShowVolume] = useState(false)
+  const hideVolumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const togglePlay = useCallback(() => {
     const v = videoRef.current
@@ -31,6 +35,38 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
     if (!v) return
     v.muted = !v.muted
     setMuted(v.muted)
+  }, [])
+
+  const handleVolumeEnter = useCallback(() => {
+    if (hideVolumeTimeout.current) {
+      clearTimeout(hideVolumeTimeout.current)
+      hideVolumeTimeout.current = null
+    }
+    setShowVolume(true)
+  }, [])
+
+  const handleVolumeLeave = useCallback(() => {
+    hideVolumeTimeout.current = setTimeout(() => {
+      setShowVolume(false)
+    }, 300)
+  }, [])
+
+  const handleVolumeChange = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const v = videoRef.current
+    const bar = volumeRef.current
+    if (!v || !bar) return
+    const rect = bar.getBoundingClientRect()
+    // Bottom = 0, top = 1
+    const ratio = Math.max(0, Math.min(1, (rect.bottom - e.clientY) / rect.height))
+    v.volume = ratio
+    setVolume(ratio)
+    if (ratio === 0) {
+      v.muted = true
+      setMuted(true)
+    } else if (v.muted) {
+      v.muted = false
+      setMuted(false)
+    }
   }, [])
 
   useEffect(() => {
@@ -68,7 +104,8 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
         preload="metadata"
         playsInline
         muted
-        className="size-full object-cover"
+        onClick={togglePlay}
+        className="size-full cursor-pointer object-cover"
       >
         <source src={src} type="video/mp4" />
       </video>
@@ -108,13 +145,40 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
           />
         </div>
 
-        <button
-          onClick={toggleMute}
-          className="shrink-0 text-white"
-          aria-label={muted ? "Activar sonido" : "Silenciar"}
+        {/* Volume control with vertical slider on hover */}
+        <div
+          className="relative shrink-0"
+          onMouseEnter={handleVolumeEnter}
+          onMouseLeave={handleVolumeLeave}
         >
-          {muted ? <VolumeX className="size-4" /> : <Volume2 className="size-4" />}
-        </button>
+          {/* Vertical volume slider */}
+          {showVolume && (
+            <div className="absolute bottom-full left-1/2 mb-2 flex -translate-x-1/2 flex-col items-center rounded bg-black/70 p-1.5">
+              <div
+                ref={volumeRef}
+                onClick={handleVolumeChange}
+                className="relative h-20 w-1.5 cursor-pointer rounded-full bg-white/30"
+              >
+                <div
+                  className="absolute inset-x-0 bottom-0 rounded-full bg-white"
+                  style={{ height: `${muted ? 0 : volume * 100}%` }}
+                />
+                <div
+                  className="absolute left-1/2 size-2.5 -translate-x-1/2 rounded-full bg-white"
+                  style={{ bottom: `calc(${muted ? 0 : volume * 100}% - 5px)` }}
+                />
+              </div>
+            </div>
+          )}
+
+          <button
+            onClick={toggleMute}
+            className="text-white"
+            aria-label={muted ? "Activar sonido" : "Silenciar"}
+          >
+            {muted ? <VolumeX className="size-4" /> : <Volume2 className="size-4" />}
+          </button>
+        </div>
       </div>
     </div>
   )
