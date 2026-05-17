@@ -18,8 +18,8 @@ export function Hero() {
         className="object-cover"
       />
 
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-primary/75" />
+      {/* Subtle dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/30" />
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 text-center">
         <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-5xl md:text-6xl">
