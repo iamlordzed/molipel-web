@@ -22,13 +22,6 @@ export function Contact() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-8 py-4 text-base font-semibold text-[#fff] shadow-lg transition-transform hover:scale-105"
         >
-          <Image
-            src="/images/whatsapp-icon.png"
-            alt=""
-            width={20}
-            height={20}
-            className="size-5 rounded-full"
-          />
           Contactar por WhatsApp
         </a>
 
