@@ -100,14 +100,15 @@ export function VideoPlayer({ src }: VideoPlayerProps) {
   return (
     <div className="group relative aspect-[3/4] w-full overflow-hidden rounded-lg border border-border bg-card">
       <video
+        key={src}
         ref={videoRef}
         preload="metadata"
         playsInline
-        muted
+        muted={muted}
         onClick={togglePlay}
         className="size-full cursor-pointer object-cover"
       >
-        <source src={src} type="video/mp4" />
+        <source src={`${src}#t=0.001`} type="video/mp4" />
       </video>
 
       {/* Play overlay when paused */}
