@@ -9,7 +9,7 @@ const _geistMono = Geist_Mono({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Molipel | Distribuidora Industrial R.C.O',
   description:
-    'Fabricacion de papel higienico, servilletas, bobinas marca Molipel. Representantes oficiales AMK Plasticos. Logistica a todo el pais con 30 anos de trayectoria.',
+    'Fabricacion de papel higienico, servilletas, bobinas marca Molipel. Representantes oficiales AMK Plasticos. Logistica a todo el pais con 30 años de trayectoria.',
   keywords: [
     'Molipel',
     'papel higienico',

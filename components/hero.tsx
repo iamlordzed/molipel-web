@@ -30,7 +30,7 @@ export function Hero() {
 
         <p className="max-w-2xl text-pretty text-base leading-relaxed text-primary-foreground/90 sm:text-lg">
           Papel higienico, servilletas, bobinas y mas. Representantes oficiales
-          de AMK Plasticos. Logistica a todo el pais con mas de 30 anos de
+          de AMK Plasticos. Logistica a todo el pais con mas de 30 años de
           trayectoria.
         </p>
 
